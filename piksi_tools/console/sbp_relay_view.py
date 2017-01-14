@@ -185,7 +185,7 @@ class SbpRelayView(HasTraits):
     if uuid:
       device_uid = uuid
     elif serial_id:
-      device_uid = str(get_uuid(channel, serial_id % 1000)
+      device_uid = str(get_uuid(channel, serial_id % 1000))
     else:
       print "Improper call of set_route, either a serial number or UUID should be passed"
       device_uid = str(get_uuid(channel, 1234))
