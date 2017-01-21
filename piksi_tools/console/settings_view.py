@@ -203,12 +203,15 @@ class SettingsView(HasTraits):
   )
   
   def _selected_setting_changed(self):
-    if selected_setting != None:
-      if self.selected_setting.name in ['surveyed_position','broadcast','surveyed_lat', 
-                                        'surveyed_lon', 'surveyed_alt']:
-        self.show_auto_survey = True
-      else:
-        self.show_auto_survey = False
+    try:
+      if self.selected_setting != None:
+        if self.selected_setting.name in ['surveyed_position','broadcast','surveyed_lat', 
+                                          'surveyed_lon', 'surveyed_alt']:
+          self.show_auto_survey = True
+        else:
+          self.show_auto_survey = False
+    except NameError, ValueError:
+      pass
 
   def _expert_changed(self, info):
     try:
